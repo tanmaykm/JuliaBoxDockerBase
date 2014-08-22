@@ -10,6 +10,6 @@ RUN apt-get install -y -o DPkg::Options::=--force-confold apt-utils python-softw
     && apt-add-repository -y ppa:staticfloat/juliareleases \
     && add-apt-repository -y ppa:staticfloat/julia-deps \
     && apt-get update \
-    && apt-get install -y julia=0.3.0-1189~ubuntu14.10.1 \
+    && apt-get install -y julia=0.3.0-1189~ubuntu14.04.1 \
     && apt-get clean
 
