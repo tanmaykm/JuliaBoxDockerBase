@@ -1,7 +1,7 @@
 # Base Dockerfile with Julia 0.3 release
-# Version:1
+# Version:2
 
-FROM tanmaykm/juliaboxdockerbase:core1
+FROM tanmaykm/juliaboxdockerbase:core2
 
 MAINTAINER Tanmay Mohapatra
 
@@ -13,3 +13,7 @@ RUN apt-get install -y -o DPkg::Options::=--force-confold apt-utils python-softw
     && apt-get install -y julia=0.3.0-1189~ubuntu14.04.1 \
     && apt-get clean
 
+# add juser
+RUN groupadd juser \
+    && useradd -m -d /home/juser -s /bin/bash -g juser -G staff \
+    && echo "export HOME=/home/juser" >> /home/juser/.bashrc

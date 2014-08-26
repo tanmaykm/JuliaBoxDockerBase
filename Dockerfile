@@ -1,5 +1,5 @@
 # Base Ubuntu Docker file for JuliaBox
-# Version:4
+# Version:2
 
 FROM stackbrew/ubuntu:trusty
 
@@ -7,10 +7,10 @@ MAINTAINER Tanmay Mohapatra
 
 # Enable the necessary sources and upgrade to latest
 RUN apt-get update \
-	&& apt-get upgrade -y -o DPkg::Options::=--force-confold
-
+	&& apt-get upgrade -y -o DPkg::Options::=--force-confold \
 # Install core packages
-RUN apt-get install -y \
+    && apt-get install -y \
+    man-db \
 	libc6 \
 	libc6-dev \
   	build-essential \
@@ -29,10 +29,7 @@ RUN apt-get install -y \
   	python-dev \
   	python-setuptools \
   	supervisor \
-  	&& apt-get clean
-
 # Install additional packages
-RUN apt-get install -y \
 	python-zmq \
 	python-jinja2 \
 	python-requests \

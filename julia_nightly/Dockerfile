@@ -1,7 +1,7 @@
 # Base Dockerfile with Julia nightly
-# Version:1
+# Version:2
 
-FROM tanmaykm/juliaboxdockerbase:core1
+FROM tanmaykm/juliaboxdockerbase:core2
 
 MAINTAINER Tanmay Mohapatra
 
@@ -12,4 +12,9 @@ RUN apt-get install -y -o DPkg::Options::=--force-confold apt-utils python-softw
     && apt-get update \
     && apt-get install -y julia \
     && apt-get clean
+
+# add juser
+RUN groupadd juser \
+    && useradd -m -d /home/juser -s /bin/bash -g juser -G staff \
+    && echo "export HOME=/home/juser" >> /home/juser/.bashrc
 
