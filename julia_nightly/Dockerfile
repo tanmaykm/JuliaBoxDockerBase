@@ -13,8 +13,3 @@ RUN apt-get install -y -o DPkg::Options::=--force-confold apt-utils python-softw
     && apt-get install -y julia \
     && apt-get clean
 
-# add juser
-RUN groupadd juser \
-    && useradd -m -d /home/juser -s /bin/bash -g juser -G staff juser \
-    && echo "export HOME=/home/juser" >> /home/juser/.bashrc
-
