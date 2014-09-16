@@ -1,5 +1,5 @@
 # Base Ubuntu Docker file for JuliaBox
-# Version:4
+# Version:5
 
 FROM stackbrew/ubuntu:trusty
 
@@ -47,7 +47,9 @@ RUN apt-get update \
     python-pip \
     && apt-get clean
 
-RUN pip install --upgrade PyDrive google-api-python-client ipython[all]
+RUN pip install --upgrade PyDrive google-api-python-client jsonpointer jsonschema
+
+RUN git clone --recursive https://github.com/tanmaykm/ipython.git; cd ipython; python setup.py install; cd ..; rm -rf ipython
 
 RUN git clone https://github.com/tanmaykm/shellinabox_fork.git; cd shellinabox_fork; ./configure; make install; cd ..; rm -rf shellinabox_fork
 

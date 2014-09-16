@@ -1,7 +1,7 @@
 # Base Dockerfile with Julia nightly
-# Version:4
+# Version:5
 
-FROM tanmaykm/juliaboxcore:4
+FROM tanmaykm/juliaboxcore:5
 
 MAINTAINER Tanmay Mohapatra
 
