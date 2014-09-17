@@ -47,7 +47,7 @@ RUN apt-get update \
     python-pip \
     && apt-get clean
 
-RUN pip install --upgrade PyDrive google-api-python-client jsonpointer jsonschema
+RUN pip install --upgrade PyDrive google-api-python-client jsonpointer jsonschema tornado sphinx pygments nose readline
 
 RUN git clone --recursive https://github.com/tanmaykm/ipython.git; cd ipython; python setup.py install; cd ..; rm -rf ipython
 
