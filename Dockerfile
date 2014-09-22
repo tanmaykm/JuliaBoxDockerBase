@@ -22,6 +22,7 @@ RUN apt-get update \
     pkg-config \
     pandoc \
     texlive \
+    texlive-latex-extra \
     inotify-tools \
     libreadline-dev \
     libncurses-dev \
