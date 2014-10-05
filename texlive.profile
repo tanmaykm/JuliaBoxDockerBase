@@ -50,7 +50,7 @@ collection-mathextra 1
 collection-metapost 1
 collection-music 0
 collection-omega 0
-collection-pictures 0
+collection-pictures 1
 collection-plainextra 1
 collection-pstricks 0
 collection-publishers 0
