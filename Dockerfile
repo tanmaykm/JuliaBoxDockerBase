@@ -1,5 +1,5 @@
 # Base Ubuntu Docker file for JuliaBox
-# Version:5
+# Version:6
 
 FROM stackbrew/ubuntu:trusty
 
@@ -21,8 +21,7 @@ RUN apt-get update \
     tmux \
     pkg-config \
     pandoc \
-    texlive \
-    texlive-latex-extra \
+    pdf2svg \
     inotify-tools \
     libreadline-dev \
     libncurses-dev \
@@ -47,6 +46,15 @@ RUN apt-get update \
     python-git \
     python-pip \
     && apt-get clean
+
+ADD texlive.profile /tmp/tl/texlive.profile
+RUN cd /tmp/tl; wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
+    tar -xzf install-tl-unx.tar.gz; cd install-tl-2014*; \
+    ./install-tl --profile=../texlive.profile; cd /; rm -rf /tmp/tl; \
+    echo "export PATH=/usr/local/texlive/2014/bin/x86_64-linux:\$PATH" > /etc/profile.d/texlive.sh; \
+    echo "export INFOPATH=/usr/local/texlive/2014/texmf-dist/doc/info:\$INFOPATH" >> /etc/profile.d/texlive.sh; \
+    echo "export MANPATH=/usr/local/texlive/2014/texmf-dist/doc/man:\$MANPATH" >>  /etc/profile.d/texlive.sh; \
+    chmod 755 /etc/profile.d/texlive.sh
 
 RUN pip install --upgrade PyDrive google-api-python-client jsonpointer jsonschema tornado sphinx pygments nose readline mistune
 

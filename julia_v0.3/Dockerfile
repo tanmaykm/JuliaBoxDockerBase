@@ -1,7 +1,7 @@
 # Base Dockerfile with Julia 0.3 release
-# Version:5
+# Version:6
 
-FROM tanmaykm/juliaboxcore:5
+FROM tanmaykm/juliaboxcore:6
 
 MAINTAINER Tanmay Mohapatra
 
@@ -10,6 +10,6 @@ RUN apt-get install -y -o DPkg::Options::=--force-confold apt-utils python-softw
     && apt-add-repository -y ppa:staticfloat/juliareleases \
     && add-apt-repository -y ppa:staticfloat/julia-deps \
     && apt-get update \
-    && apt-get install -y julia=0.3.0-1189~ubuntu14.04.1 \
+    && apt-get install -y julia=0.3.1~trusty1 \
     && apt-get clean
 
